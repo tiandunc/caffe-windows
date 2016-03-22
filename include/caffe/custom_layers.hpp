@@ -283,7 +283,7 @@ namespace caffe {
 	/**
 	* @brief Normalizes input.
 	*/
-	template <typename Dtype>
+		template <typename Dtype>
 	class NormalizeLayer : public Layer<Dtype> {
 	public:
 		explicit NormalizeLayer(const LayerParameter& param)
@@ -304,8 +304,9 @@ namespace caffe {
 			const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
 		virtual void Backward_gpu(const vector<Blob<Dtype>*>& top,
 			const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
-
+		int dim_;
 		Blob<Dtype> sum_multiplier_, norm_, squared_;
+		Blob<Dtype> diff_data_inner_product_;
 	};
 
 	/**
